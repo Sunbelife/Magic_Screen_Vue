@@ -6,10 +6,10 @@
                 :dataSource="data"
         >
             <a-list-item slot="renderItem" slot-scope="item">
-                <a-card :headStyle="styleobj">
+                <a-card :bodyStyle="styleobj" :hoverable="true">
                     <img
                             alt="example"
-                            :src="api + item.pic_dir"
+                            :src="api + item.pic_thumb"
                             slot="cover"
                     />
                     <template class="ant-card-actions" slot="actions">
@@ -55,13 +55,15 @@
         data () {
             return {
                 data: [],
-                api: process.env.VUE_APP_API_URL,
+                // api: process.env.VUE_APP_API_URL,
+                api: "http://localhost:82/",
                 ModalText: '在这里修改你想设置的图片名称',
                 visible: false,
                 confirmLoading: false,
                 currentName: "default",
                 styleobj :{
-                    height: "10px",
+                    height: "100%",
+                    padding: "15px",
                 },
             }
         },
@@ -70,6 +72,7 @@
                 .then((response) => {
                     this.data = response
                     console.log(response.status)
+                    console.log(this.data)
                 })
         },
         methods: {
@@ -136,7 +139,7 @@
                 }
             },
             go_to_show(){
-                this.$router.push({path:'/show'})
+                this.$router.push({path:'/HelloWorld'})
             }
         },
     }
@@ -146,6 +149,7 @@
     #content {
         width: 80%;
         margin: 0 auto;
+        padding-top: 50px;
     }
     .ant-card-hoverable:hover {
         -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);

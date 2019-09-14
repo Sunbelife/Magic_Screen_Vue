@@ -1,6 +1,6 @@
 <template>
     <div class="scroll-content">
-    <a-carousel autoplay :afterChange="reloadme">
+    <a-carousel autoplay :afterChange="reloadme" :centerMode="true" effect="fade" :autoplaySpeed="6000" easing="easeInElastic">
         <div v-for="i in pics">
             <img :src="api + i.pic_dir" width="100%"/>
         </div>
@@ -15,7 +15,8 @@
         data() {
             return {
                 pics:[],
-                api: process.env.VUE_APP_API_URL,
+                // api: process.env.VUE_APP_API_URL,
+                api: "http://localhost:82/",
             }
         },
         beforeCreate () {
